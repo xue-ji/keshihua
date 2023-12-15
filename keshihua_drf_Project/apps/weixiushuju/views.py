@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.views import View
 from pyecharts import options as opts
 from pyecharts.charts import Pie, Timeline, Grid, Line, Page, Liquid, Bar
@@ -163,8 +163,8 @@ class BuLiangWeiXiu(View):
         html2 = html1.split('body')
         # print(html2[1][2:-2])
         # 获取完成再转码
-        html3 = html2[1][2:-2].encode('utf-8')
-        return render(request, 'top5.html')
+        html3 = html2[1][2:-2]
+        return HttpResponse(html3)
 
 
 class HeBingShuJu(View):

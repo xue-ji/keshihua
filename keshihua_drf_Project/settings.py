@@ -71,6 +71,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8080',
     'http://localhost:8080',
     'http://30.140.86.184:8080',
+    'http://localhost:5173',
 ]
 
 # CORS_ALLOW_CREDENTIALS 指明在跨域访问中后端是否支持对 cookie的操作.

@@ -11,14 +11,46 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/" >
+          bulaing
+        </RouterLink>
+        <RouterLink to="/about">hebing</RouterLink>
       </nav>
+      <button v-on:click="buliang">bulaing</button>
     </div>
   </header>
 
   <RouterView />
 </template>
+
+<script>
+import { BuLingApi } from '@/util/request';
+import { reactive, toRefs } from 'vue';
+
+export default {
+  name: "app",
+  setup(){
+    const buliang=()=>{
+      alert("你好")
+      BuLingApi().then(res=>{
+        
+        console.log(res)
+      })
+
+    }
+    const data=reactive({
+
+    })
+    return {
+      ...toRefs(data),
+      buliang
+    }
+  }
+}
+
+
+
+</script>
 
 <style scoped>
 header {
