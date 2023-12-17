@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -11,49 +11,14 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/" >
-          bulaing
-        </RouterLink>
-        <RouterLink to="/about">hebing</RouterLink>
-        <RouterLink to="/buliang">
-          <button v-on:click="buliang">bulaing</button>
-        </RouterLink>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
       </nav>
-      
     </div>
   </header>
 
   <RouterView />
 </template>
-
-<script>
-import { BuLingApi } from '@/util/request';
-import { reactive, toRefs } from 'vue';
-
-export default {
-  name: "app",
-  setup(){
-    const buliang=()=>{
-      alert("你好")
-      BuLingApi().then(res=>{
-        
-        console.log(res)
-      })
-
-    }
-    const data=reactive({
-
-    })
-    return {
-      ...toRefs(data),
-      buliang
-    }
-  }
-}
-
-
-
-</script>
 
 <style scoped>
 header {
