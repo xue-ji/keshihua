@@ -11,7 +11,7 @@
 import { reactive, toRefs } from 'vue';
 import { BuLingApi } from '@/util/request';
 export default {
-  // name:"about",
+  name:"about",
   setup() {
     const data = reactive({
       msg:"您好",

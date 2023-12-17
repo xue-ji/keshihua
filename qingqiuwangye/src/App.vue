@@ -15,8 +15,11 @@ import HelloWorld from './components/HelloWorld.vue'
           bulaing
         </RouterLink>
         <RouterLink to="/about">hebing</RouterLink>
+        <RouterLink to="/buliang">
+          <button v-on:click="buliang">bulaing</button>
+        </RouterLink>
       </nav>
-      <button v-on:click="buliang">bulaing</button>
+      
     </div>
   </header>
 
