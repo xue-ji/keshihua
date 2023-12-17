@@ -1,6 +1,6 @@
-import './assets/echarts.min.Js'
 import './assets/base.css'
 import './assets/main.css'
+import * as echarts from 'echarts'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

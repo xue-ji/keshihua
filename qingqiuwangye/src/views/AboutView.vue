@@ -10,7 +10,6 @@
 <script>
 import { reactive, toRefs } from 'vue';
 import { BuLingApi } from '@/util/request';
-
 export default {
   // name:"about",
   setup() {
