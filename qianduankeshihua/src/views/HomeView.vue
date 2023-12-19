@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
@@ -8,6 +7,5 @@ import TheWelcome from '../components/TheWelcome.vue'
     <el-button type="success">Success</el-button>
     <el-button type="info">Info</el-button>
     <el-button type="warning">Warning</el-button>
-    <TheWelcome />
   </main>
 </template>
