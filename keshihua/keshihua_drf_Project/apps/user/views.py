@@ -22,7 +22,11 @@ class LoginView(View):
             jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
             payload = jwt_payload_handler(user)
             token = jwt_encode_handler(payload)
-            return JsonResponse({'code': 200, 'message': '登录成功', 'data': {'token': token}})
+            return JsonResponse({'code': 200,
+                                 'message': '登录成功',
+                                 'data': {'token': token},
+                                 'succeed': True,
+                                 })
         else:
             return HttpResponseForbidden("用户名或密码错误")
 

@@ -8,7 +8,7 @@ export const loginApi = (data: {
 }) => {
     return $http({
         method: "POST",
-        url: "/login",
+        url: "/login/",
         data,
     })
 }

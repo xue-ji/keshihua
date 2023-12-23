@@ -46,6 +46,6 @@ export const $http = async(config: AxiosRequestConfig) => {
         }
         throw err;
     } finally {
-        loadingInstance;
+        loadingInstance.close();
     }
 };
