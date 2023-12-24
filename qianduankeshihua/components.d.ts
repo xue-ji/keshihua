@@ -10,6 +10,8 @@ declare module 'vue' {
     AdminHeader: typeof import('./src/components/layout/AdminHeader.vue')['default']
     AdminHome: typeof import('./src/components/home/AdminHome.vue')['default']
     AdminMenu: typeof import('./src/components/layout/AdminMenu.vue')['default']
+    AdminOverview: typeof import('./src/components/home/adminHome/AdminOverview.vue')['default']
+    BarChart: typeof import('./src/components/home/adminHome/BarChart.vue')['default']
     ElAffi: typeof import('element-plus/es')['ElAffi']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAside: typeof import('element-plus/es')['ElAside']
@@ -36,10 +38,13 @@ declare module 'vue' {
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    LineChart: typeof import('./src/components/home/adminHome/LineChart.vue')['default']
+    PieChart: typeof import('./src/components/home/adminHome/PieChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     UserManagement: typeof import('./src/components/users/UserManagement.vue')['default']
+    WeiXiu: typeof import('./src/components/home/adminHome/WeiXiu.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }

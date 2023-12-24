@@ -2,10 +2,12 @@
   <div id="home">
     <el-container>
       <el-header>
-        <AdminHeader></AdminHeader>
+        <el-affix >
+          <AdminHeader></AdminHeader>
+        </el-affix>
       </el-header>
       <el-container>
-        <el-affix>
+        <el-affix :offset="60">
           <el-aside width="200px">
             <AdminMenu></AdminMenu>
           </el-aside>
@@ -22,6 +24,15 @@
 import AdminHeader from "@/components/layout/AdminHeader.vue";
 import AdminMenu from "@/components/layout/AdminMenu.vue";
 
+// import { useUserInfoStore } from "@/stores/userinfo.store";
+// import { getUserInfoApi } from "@/apis/userinfo"
+// // 请求用户数据
+// const userInfoStore = useUserInfoStore();
+// const getUserinfo = async () => {
+//   const res = await getUserInfoApi();
+//   console.log(res)
+// }
+// getUserinfo();
 </script>
 
 <style lang="scss" scoped>

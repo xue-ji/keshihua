@@ -5,6 +5,7 @@ import json
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -15,7 +16,7 @@ class LoginView(View):
         username = json_dict.get('username')
         password = json_dict.get('password')
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -29,4 +30,26 @@ class LoginView(View):
                                  })
         else:
             return HttpResponseForbidden("用户名或密码错误")
+
+
+class UserInfoView(View):
+    # login_url = 'login/'
+    # redirect_field_name = 'redirect_to'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            data = {
+                'username': request.user.username,
+                'nickname': '管理员',
+                'phoneNumber': '0123456789',
+                'email': '<EMAIL>',
+                'avater': 'sssssssssssss',
+                'gender': 1,
+                'integration': 1,
+            }
+            return JsonResponse({'succeed': True, 'code': 200, 'message': '成功', 'data': data})
+        else:
+            return JsonResponse({'succeed': False, 'code': 401, 'message': '失败'})
+
+
 
