@@ -49,7 +49,7 @@ const login = async () => {
   const res=await loginApi(form.value);
   userInfoStore.setAuth(res.data.token);
   ElMessage.success("登录成功！");
-  router.push("/home");
+  router.push("/home/admin-home");
 }
 
 const reset = () => {
