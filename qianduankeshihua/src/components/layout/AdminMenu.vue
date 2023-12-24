@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { ElSubMenu, ElMenuItem } from 'element-plus';
-import { House, User, Goods } from '@element-plus/icons-vue/global';
+import { House, User, Goods, TrendCharts } from '@element-plus/icons-vue/global';
 import { ref } from "vue";
 import router from '@/router';
 
@@ -65,6 +65,12 @@ const menulist: MenuItem[] = [
     name: '用户管理',
     index: '/home/users',
     icon: User
+  },
+  {
+    id: 3,
+    name: '可视化数据',
+    index: '/home/charts',
+    icon: TrendCharts, 
   },
   {
     id: 101,

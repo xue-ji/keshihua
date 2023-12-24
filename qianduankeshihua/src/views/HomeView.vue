@@ -6,12 +6,12 @@
           <AdminHeader></AdminHeader>
         </el-affix>
       </el-header>
-      <el-container>
-        <el-affix :offset="60">
-          <el-aside width="200px">
+      <el-container> 
+        <el-aside width="200px">
+            <el-affix :offset="60">
             <AdminMenu></AdminMenu>
-          </el-aside>
-        </el-affix>
+          </el-affix>
+        </el-aside>
         <el-main>
           <RouterView/>
         </el-main>

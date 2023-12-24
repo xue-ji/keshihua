@@ -24,7 +24,7 @@ from pyecharts.globals import ThemeType, ChartType
 class BuLiangWeiXiu(View):
 
     def get(self, request):
-        df_weixiu = pd.read_excel(r'E:\Greatwall\keshihua\anli\anli\weixiushuju.xlsx')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx')
         total = sum(count[1] for count in [size for size in df_weixiu['不良原因'].value_counts().items()])
         list1 = [size for size in df_weixiu['不良原因'].value_counts().items()]
 
@@ -164,7 +164,7 @@ class BuLiangWeiXiu(View):
         # print(html2[1][2:-2])
         # 获取完成再转码
         html3 = html2[1][2:-2]
-        return HttpResponse(html3)
+        return HttpResponse(html1)
 
 
 class HeBingShuJu(View):
@@ -173,7 +173,7 @@ class HeBingShuJu(View):
 
         # # OnlineHostType.NOTEBOOK_HOST 默认值为 http://localhost:8888/nbextensions/assets/
         # CurrentConfig.ONLINE_HOST = OnlineHostType.NOTEBOOK_HOST
-        df_weixiu = pd.read_excel(r'E:\Greatwall\keshihua\anli\anli\weixiushuju.xlsx')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx')
         df_weixiu
 
         list1 = [size for size in df_weixiu['成品料号描述'].value_counts().items()]
@@ -200,7 +200,7 @@ class HeBingShuJu(View):
         pie1.render_notebook()
 
 
-        df_weixiu = pd.read_excel(r'E:\Greatwall\keshihua\anli\anli\weixiushuju.xlsx')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx')
         df_weixiu
 
         list1 = [size for size in df_weixiu['责任类别'].value_counts().items()]
@@ -304,7 +304,7 @@ class HeBingShuJu(View):
         pie2.render_notebook()
 
 
-        df_weixiu = pd.read_excel(r'E:\Greatwall\keshihua\anli\anli\weixiushuju.xlsx')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx')
         df_weixiu
 
         list1 = [size for size in df_weixiu['不良原因'].value_counts().items()]
@@ -443,7 +443,7 @@ class HeBingShuJu(View):
         )
         pie3.render_notebook()
 
-        df_RAUSE = pd.read_excel(r'E:\Greatwall\keshihua\anli\anli\kpishuju.xls')
+        df_RAUSE = pd.read_excel(r'D:\桌面\anli\kpishuju.xls')
 
         [i for i in df_RAUSE['抽检良率'].value_counts().items()]
 
