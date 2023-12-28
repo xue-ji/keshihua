@@ -1,7 +1,7 @@
 <template>
     <div id="header">
         <div class="logo-box">
-            东方闪电法术发
+            长城电源质量部
         </div>
         <div class="right-box">
             <div class="title">可视化页面</div>

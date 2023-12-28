@@ -141,8 +141,13 @@ const option = ref({
       showBackground: true,
       backgroundStyle: {
         color: 'rgba(180, 180, 180, 0.2)'
-      }
-    }
+      },
+      label: {
+        show: true,
+        // position: 'TOP',
+        valueAnimation: true,
+        },
+    },
   ]
 })
 </script>

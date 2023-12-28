@@ -71,6 +71,18 @@ const menulist: MenuItem[] = [
     name: '可视化数据',
     index: '/home/charts',
     icon: TrendCharts, 
+    children: [
+      {
+        id: 301,
+        name: '基本数据',
+        index: '/home/charts-jiben',
+      },
+      {
+        id: 302,
+        name: '筛选数据',
+        index: '/home/charts-saixuan',
+      },
+    ],
   },
   {
     id: 101,

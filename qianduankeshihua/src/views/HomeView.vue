@@ -2,13 +2,13 @@
   <div id="home">
     <el-container>
       <el-header>
-        <el-affix >
+        <el-affix :offset="0" position="top">
           <AdminHeader></AdminHeader>
         </el-affix>
       </el-header>
       <el-container> 
         <el-aside width="200px">
-            <el-affix :offset="60">
+            <el-affix :offset="60" position="top">
             <AdminMenu></AdminMenu>
           </el-affix>
         </el-aside>

@@ -27,8 +27,8 @@ const router = createRouter({
           component: () => import("@/components/users/UserManagement.vue")
         },
         {
-          path: "charts",
-          name: "charts",
+          path: "charts-jiben",
+          name: "charts-jiben",
           component: () => import("@/components/trendcharts/ChartsHome.vue")
         },
         {

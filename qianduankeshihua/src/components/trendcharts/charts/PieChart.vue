@@ -52,7 +52,7 @@ const option = ref({
   legend: {
     orient: 'vertical',
     left: 'left',
-    data: ['Direct', 'Email', 'Ad Networks', 'Video Ads', 'Search Engines']
+    data: ['Direct', 'Email', 'Ad Networks', 'Video Ads', 'Search Engines'],
   },
   series: [
     {
@@ -73,7 +73,7 @@ const option = ref({
           shadowBlur: 10,
           shadowOffsetX: 0,
           shadowColor: 'rgba(0, 0, 0, 0.5)'
-        }
+        },
       }
     }
   ]

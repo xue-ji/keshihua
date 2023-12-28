@@ -13,7 +13,7 @@
 import BarChart from "./charts/BarChart.vue";
 import LineChart from "./charts/LineChart.vue";
 import PieChart from "./charts/PieChart.vue";
-import WeiXiu from "./charts/WeiXiu.vue";4
+import WeiXiu from "./charts/WeiXiu.vue";
 import MeiGui from "./charts/MeiGui.vue";
 
 </script>
@@ -26,7 +26,7 @@ import MeiGui from "./charts/MeiGui.vue";
     box-shadow: var(--el-box-shadow-light);
 
     .item {
-        height: calc((100vh - 100px) / 2);
+        height: 90vh;
         min-height: 360px;
         padding: 20px;
         border: 1px solid #f5f5f5; 
