@@ -32,6 +32,11 @@ const router = createRouter({
           component: () => import("@/components/trendcharts/ChartsHome.vue")
         },
         {
+          path: "charts-saixuan",
+          name: "charts-saixuan",
+          component: () => import("@/components/trendcharts/SaixuanHome.vue")
+        },
+        {
           path: "goods",
           name: "goods",
           component: () => import("@/components/goods/GoodsManagement.vue")

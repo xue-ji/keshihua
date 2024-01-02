@@ -44,6 +44,22 @@ class BuLiangWeiXiu(View):
         return response
 
 
+class XiantiView(View):
+    def get(self, request):
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx')
+        my_list = []
+        for i in df_weixiu['线别'].drop_duplicates():
+            my_list.append({
+                'typeName': i,
+            })
+        response = JsonResponse({
+            'succeed': True,
+            'code': 200,
+            'message': '成功',
+            'data': my_list,
+        })
+        return response
+
 class HeBingShuJu(View):
 
     def get(self, request):

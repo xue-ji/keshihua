@@ -22,3 +22,11 @@ export const getLineXinbuliangApi = () => {
         url: "/xinbuliang/",
     })
 }
+
+// 筛选数据页面获取线体
+export const getXiantiApi = () => {
+    return $http({
+        method: "GET",
+        url: "/xianti/",
+    })
+}
