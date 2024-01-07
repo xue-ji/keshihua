@@ -2,15 +2,11 @@
   <div id="home">
     <el-container>
       <el-header>
-        <el-affix :offset="0" position="top">
           <AdminHeader></AdminHeader>
-        </el-affix>
       </el-header>
       <el-container> 
         <el-aside width="200px">
-            <el-affix :offset="60" position="top">
             <AdminMenu></AdminMenu>
-          </el-affix>
         </el-aside>
         <el-main>
           <RouterView/>
@@ -41,12 +37,25 @@ import AdminMenu from "@/components/layout/AdminMenu.vue";
   min-height: 100vh;
 }
 .el-header {
+  position: relative;
   background-color: #2b2c43;
   padding: 0;
 }
 .el-aside {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 60px;
+  bottom: 0;
   background-color: #2b2c43;
   min-height: calc(100vh - 60px);
+}
+.el-main {
+  position: absolute;
+  top: 60px;
+  left: 200px;
+  bottom: 0;
+  overflow-y: scroll;
 }
 
 </style>

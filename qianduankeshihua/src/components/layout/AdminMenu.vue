@@ -62,13 +62,13 @@ const menulist: MenuItem[] = [
   },
   {
     id: 2,
-    name: '用户管理',
+    name: '客诉管理',
     index: '/home/users',
     icon: User
   },
   {
     id: 3,
-    name: '可视化数据',
+    name: '维修数据',
     index: '/home/charts',
     icon: TrendCharts, 
     children: [
@@ -86,7 +86,7 @@ const menulist: MenuItem[] = [
   },
   {
     id: 101,
-    name: '商品管理',
+    name: '品质管理',
     index: '/home/goods',
     icon: Goods,
     children: [
