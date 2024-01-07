@@ -38,6 +38,7 @@ import AdminMenu from "@/components/layout/AdminMenu.vue";
 }
 .el-header {
   position: relative;
+  width: 100%;
   background-color: #2b2c43;
   padding: 0;
 }
@@ -54,6 +55,7 @@ import AdminMenu from "@/components/layout/AdminMenu.vue";
   position: absolute;
   top: 60px;
   left: 200px;
+  right: 0;
   bottom: 0;
   overflow-y: scroll;
 }
