@@ -5,6 +5,7 @@
         <LineChart class="item"></LineChart>
         <WeiXiu class="item"></WeiXiu>
         <MeiGui class="item"></MeiGui>
+        <KpiChart class="item"></KpiChart>
 
     </div>
 </template>
@@ -15,6 +16,8 @@ import LineChart from "./charts/LineChart.vue";
 import PieChart from "./charts/PieChart.vue";
 import WeiXiu from "./charts/WeiXiu.vue";
 import MeiGui from "./charts/MeiGui.vue";
+import KpiChart from "./charts/KpiChart.vue";
+
 
 </script>
 

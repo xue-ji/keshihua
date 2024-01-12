@@ -13,6 +13,8 @@ import { getXinbuliangApi } from '@/apis/chart'
 
 use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
 
+
+
 // 定义维修数据类型
 interface DataItem {
   typeName: string;

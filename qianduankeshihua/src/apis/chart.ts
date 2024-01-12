@@ -30,3 +30,11 @@ export const getXiantiApi = () => {
         url: "/xianti/",
     })
 }
+
+// KPI接口
+export const getKpiApi = () => {
+    return $http({
+        method: "GET",
+        url: "/kpi/",
+    })
+}

@@ -39,14 +39,18 @@
       />
     </div>
   </div>
+  <div class="wrap">
+    <PieChart class="item"></PieChart>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type { CheckboxValueType } from 'element-plus'
 import { getXiantiApi } from '@/apis/chart'
+import PieChart from "./saixuan/PieChart.vue";
 
-const checkAll = ref(false)
+const checkAll = ref(true)
 const indeterminate = ref(false)
 const value = ref<CheckboxValueType[]>([])
 
@@ -68,6 +72,9 @@ const getxianti = async () => {
     label:item.typeName,
   }) 
   );
+  // 开始默认全选
+  value.value = cities.value.map((_) => _.value)
+
 };
 getxianti();
 
@@ -77,7 +84,6 @@ const cities = ref([
     label: 'Beijing'
   },
 ])
-
 
 watch(value, (val) => {
   if (val.length === 0) {
@@ -144,6 +150,8 @@ const shortcuts = [
   padding: 0;
   //   justify-items: center;
   flex-wrap: wrap;
+  box-shadow: var(--el-box-shadow-light);
+  
 }
 .demo-date-picker .select {
   flex: 1;
@@ -168,5 +176,19 @@ const shortcuts = [
   color: var(--el-text-color-secondary);
   font-size: 14px;
   margin-bottom: 20px;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    box-shadow: var(--el-box-shadow-light);
+
+    .item {
+        height: 90vh;
+        min-height: 360px;
+        padding: 20px;
+        border: 1px solid #f5f5f5; 
+    }
 }
 </style>

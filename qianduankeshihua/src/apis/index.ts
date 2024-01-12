@@ -19,8 +19,15 @@ export const $http = async(config: AxiosRequestConfig) => {
 
     try {
         const axiosResponse = await httpInstance<BkResponse>(config);
-        const bkResponse = axiosResponse.data
-
+        // 处理后端返回值有NAN 的问题
+        let bkResponse;
+        if (typeof(axiosResponse?.data) === "string") {
+            bkResponse = JSON.parse(axiosResponse?.data.replace(/\bNaN\b/g,"null"))
+        } else{
+            bkResponse = axiosResponse.data
+        }
+        
+        // 拦截器
         if (!bkResponse?.succeed) {
             let errTilte: string='Error';
             if (bkResponse.code === 401) {

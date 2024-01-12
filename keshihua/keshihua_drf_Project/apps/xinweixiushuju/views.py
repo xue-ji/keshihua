@@ -1,3 +1,5 @@
+from math import nan
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views import View
@@ -8,14 +10,11 @@ import pandas as pd
 from pathlib import Path
 import os
 # 只需要在顶部声明 CurrentConfig.ONLINE_HOST 即可
-from pyecharts.globals import CurrentConfig, OnlineHostType
-import matplotlib
 import xlrd
 from pandas import DataFrame
 from pyecharts.faker import Faker
 from pyecharts.components import Table
 import numpy as np
-from pyecharts.globals import ThemeType, ChartType
 
 
 # Create your views here.
@@ -28,6 +27,7 @@ class BuLiangWeiXiu(View):
         total = sum(count[1] for count in [size for size in df_weixiu['不良原因'].value_counts().items()])
         list1 = [size for size in df_weixiu['不良原因'].value_counts().items()]
 
+        # 获取不良原因数据
         buliang_list = []
         for buliang in list1:
             buliang_list.append({
@@ -35,6 +35,7 @@ class BuLiangWeiXiu(View):
                 'num': buliang[1],
                 'percentage': round(buliang[1] / total, 2) * 100,
             })
+        # 给前端返回数据
         response = JsonResponse({
             'succeed': True,
             'code': 200,
@@ -48,10 +49,13 @@ class XiantiView(View):
     def get(self, request):
         df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx')
         my_list = []
+
+        # 获取线体数据
         for i in df_weixiu['线别'].drop_duplicates():
             my_list.append({
                 'typeName': i,
             })
+
         response = JsonResponse({
             'succeed': True,
             'code': 200,
@@ -59,6 +63,32 @@ class XiantiView(View):
             'data': my_list,
         })
         return response
+
+
+class KpiView(View):
+    def get(self, request):
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\kpishuju.xls').to_dict('records')
+
+        my_list = []
+        for i in df_weixiu:
+            if i['工资成本'] != nan:
+                my_list.append({
+                    "yuefen": i['项目'],
+                    "choujian": round(i['抽检良率'], 2) * 100,
+                    "gongzi": i['工资成本'],
+                    "tongxun": i['通讯上线DPPM'],
+                    "zhaofan": i['PC产品5月早返率(DPPM)'],
+                    "fangong": i['返工工时'],
+                    "zhitong": round(i['直通率'], 2) * 100,
+                })
+
+        return JsonResponse({
+            'succeed': True,
+            'code': 200,
+            'message': "成功",
+            'data': my_list,
+        })
+
 
 class HeBingShuJu(View):
 

@@ -30,7 +30,7 @@ const data = ref<DataItem[]>([])
   // 维修数据接口
   const getxinbuliang = async () => {
     const res = await getBarXinbuliangApi();
-    console.log(res);
+    // console.log(res);
     data.value = res.data;
     option.value.xAxis.data = data.value.map((item)=>item.typeName );
     option.value.series[0].data = data.value.map((item)=> item.num)

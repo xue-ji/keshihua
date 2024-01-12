@@ -57,6 +57,7 @@ import AdminMenu from "@/components/layout/AdminMenu.vue";
   left: 200px;
   right: 0;
   bottom: 0;
+  // 显示下拉滚动
   overflow-y: scroll;
 }
 
