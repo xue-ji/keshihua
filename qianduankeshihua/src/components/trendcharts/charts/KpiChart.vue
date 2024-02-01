@@ -84,7 +84,7 @@ const option = ref({
         alignWithLabel: true
       },
       // prettier-ignore
-      data: [1, 2, 3]
+      data: ['1', '2', '3']
     }
   ],
   yAxis: [

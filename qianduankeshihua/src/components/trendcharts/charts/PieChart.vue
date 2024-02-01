@@ -74,6 +74,9 @@ const option = ref({
           shadowOffsetX: 0,
           shadowColor: 'rgba(0, 0, 0, 0.5)'
         },
+      },
+      label: {
+        show: true,
       }
     }
   ]
