@@ -53,7 +53,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type { CheckboxValueType } from 'element-plus'
-import { getXiantiApi } from '@/apis/chart'
+import { getXiantiApi } from "@/apis/chart"
 import PieChart from './saixuan/PieChart.vue'
 
 const checkAll = ref(true)
