@@ -1,5 +1,6 @@
+import json
 from math import nan
-
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views import View
@@ -9,6 +10,7 @@ from pyecharts.commons.utils import JsCode
 import pandas as pd
 from pathlib import Path
 import os
+from collections import Counter
 # 只需要在顶部声明 CurrentConfig.ONLINE_HOST 即可
 import xlrd
 from pandas import DataFrame
@@ -87,6 +89,38 @@ class KpiView(View):
             'code': 200,
             'message': "成功",
             'data': my_list,
+        })
+
+
+class XiantishujuView(View):
+    def post(self, request):
+        json_dict = json.loads(request.body.decode())
+        xianti = json_dict.get('xianti')
+        shijian = json_dict.get('time').split(',')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx').to_dict('records')
+        # total = [size for size in df_weixiu.loc[(df_weixiu['线别'].isin(xianti))]]
+        if shijian != ['']:
+            xiantishuju = [value for value in [i for i in df_weixiu if i['线别'] in xianti] if datetime.strptime(shijian[0], '%Y/%m/%d %H:%M:%S') <= datetime.strptime(value['不良时间'], '%Y/%m/%d %H:%M:%S') <= datetime.strptime(shijian[1], '%Y/%m/%d %H:%M:%S')]
+        else:
+            xiantishuju = [i for i in df_weixiu if i['线别'] in xianti]
+        total = Counter([x['不良原因'] for x in xiantishuju])
+        sss = sum(total.values())
+
+        # 获取不良原因数据
+        buliang_list = []
+        for buliang in total:
+            buliang_list.append({
+                'typeName': buliang,
+                'num': total[buliang],
+                'percentage': round(int(total[buliang]) / sss, 2) * 100,
+            })
+        print(buliang_list)
+
+        return JsonResponse({
+            'succeed': True,
+            'code': 200,
+            'message': "成功",
+            'data': buliang_list,
         })
 
 

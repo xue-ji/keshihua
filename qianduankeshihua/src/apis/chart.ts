@@ -31,6 +31,18 @@ export const getXiantiApi = () => {
     })
 }
 
+export const postxiantishijianApi = (data: {
+    xianti: any[];
+    time: string;
+
+}) => {
+    return $http({
+        method: "POST",
+        url: "/xiantishuju/",
+        data
+    })
+}
+
 // KPI接口
 export const getKpiApi = () => {
     return $http({

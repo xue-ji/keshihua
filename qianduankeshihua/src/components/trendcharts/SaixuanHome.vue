@@ -40,21 +40,22 @@
         />
       </div>
       <div class="btns">
-          <el-button type="primary" class="btn" @click="login">搜索</el-button>
+          <el-button type="primary" class="btn" @click="songsuo">搜索</el-button>
           
         </div>
     </div>
   </el-form>
   <div class="wrap">
-    <PieChart class="item"></PieChart>
+    <PieChart class="item" v-if="xianshi == 1" :shuju="data1"></PieChart>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type { CheckboxValueType } from 'element-plus'
-import { getXiantiApi } from "@/apis/chart"
+import { getXiantiApi, postxiantishijianApi } from "@/apis/chart"
 import PieChart from './saixuan/PieChart.vue'
+import { time } from 'console';
 
 const checkAll = ref(true)
 const indeterminate = ref(false)
@@ -64,6 +65,11 @@ const value2 = ref('')
 
 interface XiantiItem {
   typeName: string
+}
+interface DataItem {
+  typeName: string;
+  num: number;
+  percentage: number;
 }
 
 const data = ref<XiantiItem[]>([])
@@ -137,6 +143,23 @@ const shortcuts = [
     }
   }
 ]
+
+
+// 搜索部分
+const xianshi = ref(0)
+const data1 = ref<DataItem[]>([])
+const songsuo = async () => {
+  const res = await postxiantishijianApi({
+    xianti: value.value,
+    time: value2.value.toLocaleString(),
+  })
+  data1.value = res.data
+  console.log(res)
+  xianshi.value = 1
+  
+}
+console.log()
+
 </script>
 
 <style lang="scss" scoped>
