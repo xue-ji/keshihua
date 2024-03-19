@@ -1,5 +1,7 @@
 <template>
   <v-chart class="chart" :option="option" autoresize />
+  
+
 </template>
 
 <script lang="ts" setup>
@@ -9,7 +11,7 @@ import { PieChart } from 'echarts/charts';
 import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components';
 import VChart from 'vue-echarts';
 import { ref, onUpdated, onMounted } from 'vue';
-
+import { defineEmits } from 'vue'  
 use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
 
 
@@ -63,20 +65,32 @@ onMounted(() => {
   option.value.series[0].data =  yyy.shuju.map((item)=>({
     value:item.num,
     name:item.typeName,
+    percent:item.percentage,
   }))
-  console.log(yyy.shuju)
+  
 })
 onUpdated(() => {
   option.value.legend.data =  yyy.shuju.map((item)=>item.typeName );
   option.value.series[0].data =  yyy.shuju.map((item)=>({
     value:item.num,
     name:item.typeName,
+    percent:item.percentage,
   }))
-  console.log(yyy.shuju)
+  
 })
+
+// 定义派发事件
+let emit = defineEmits(['refresh'])
+// const fanhui = () => {
+//   emit('refresh')
+//   console.log('chuchcu')
+// }
 
 // console.log(yyy.shuju)
 // console.log(option.value.legend)
+window.myDialog = (shuju) => {
+  emit('refresh', shuju)
+}
 
 const option = ref({
   title: {
@@ -85,17 +99,20 @@ const option = ref({
   },
   tooltip: {
     enterable: true,
-    triggerOn: 'mousemove',
+    // triggerOn: 'mousemove',
     trigger: 'item',
+    triggerOn: "mousemove", 
     // 浮层隐藏的延迟
     hideDelay: 100,
     position: 'inside', 
     formatter: function (params) {
-               return `<div class=chartLabel>
+        
+        return `<div class=chartLabel>
               <div class=title>${params.seriesName}</div>
-              <div class=label>${params.name}:${params.value} (${params.percent}%)</div>
-              <button id="btn-tooltip">查看更多</button>
+              <div class=label>${params.name}:${params.value}  (${params.percent}%)</div>
+              <button onclick="myDialog('${params.name}')">查看更多</button>
             </div>`
+        
     }
 
   },
@@ -110,14 +127,32 @@ const option = ref({
       name: '不良原因',
       type: 'pie',
       radius: '55%',
-      center: ['70%', '60%'],
+      center: ['50%', '50%'],
+      avoidLabelOverlap: true,
+      labelLayout: {
+        hideOverlap: false
+      },
+      label: {
+        alignTo: 'labelLine', // ! 文字对齐方式
+        formatter: function (e) {
+            let {
+                data: { value, name, percent },
+            } = e;
+            return `{x|}{a|${name}}\n{b|${value}个}{c|${percent}%}`;
+        },
+        minMargin: 5,
+        lineHeight: 15,
+        rich: {
+            x: { width: 10, height: 10, backgroundColor: 'inherit', borderRadius: 5 },
+            a: { fontSize: 14, color: 'inherit', padding: [0, 20, 0, 8] },
+            b: { fontSize: 12, align: 'left', color: '#666666', padding: [8, 0, 0, 18] },
+            c: { fontSize: 12, align: 'left', color: '#666666', padding: [8, 0, 0, 8] },
+        },
+      },
       // 数据
       data: [
-        { value: 335, name: 'Direct' },
-        { value: 310, name: 'Email' },
-        { value: 234, name: 'Ad Networks' },
-        { value: 135, name: 'Video Ads' },
-        { value: 1548, name: 'Search Engines' }
+        { value: 335, name: 'Direct', percent: 123 },
+
       ],
       emphasis: {
         itemStyle: {
@@ -131,4 +166,6 @@ const option = ref({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

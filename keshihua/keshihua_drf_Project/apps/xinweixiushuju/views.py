@@ -120,8 +120,60 @@ class XiantishujuView(View):
             'succeed': True,
             'code': 200,
             'message': "成功",
-            'data': buliang_list,
+            'data': [buliang_list, [i['条码'] for i in xiantishuju]],
         })
+
+
+class XiangqinShujuView(View):
+    def post(self, request):
+        json_dict = json.loads(request.body.decode())
+        name = json_dict.get('name')
+        tiaoma = json_dict.get('tiaoma')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx').to_dict('records')
+        shuju = [i for i in df_weixiu if i['不良原因'] == name and i['条码'] in tiaoma]
+        total = Counter([x['维修位号'] for x in shuju])
+        sss = sum(total.values())
+
+        # 获取不良原因数据
+        buliang_list = []
+        for buliang in total:
+            buliang_list.append({
+                'weihao': buliang,
+                'num': total[buliang],
+            })
+
+        return JsonResponse({
+                    'succeed': True,
+                    'code': 200,
+                    'message': "成功",
+                    'data': [buliang_list, [i['条码'] for i in shuju]],
+                })
+
+
+class JixingShujuView(View):
+    def post(self, request):
+        json_dict = json.loads(request.body.decode())
+        weihao = json_dict.get('weihao')
+        tiaoma = json_dict.get('tiaoma')
+        df_weixiu = pd.read_excel(r'D:\桌面\anli\weixiushuju.xlsx').to_dict('records')
+        shuju = [i for i in df_weixiu if i['维修位号'] == weihao and i['条码'] in tiaoma]
+        total = Counter([x['成品料号描述'] for x in shuju])
+        sss = sum(total.values())
+
+        # 获取不良原因数据
+        buliang_list = []
+        for buliang in total:
+            buliang_list.append({
+                'jixing': buliang,
+                'num': total[buliang],
+            })
+
+        return JsonResponse({
+                    'succeed': True,
+                    'code': 200,
+                    'message': "成功",
+                    'data': [buliang_list, [i['条码'] for i in shuju]],
+                })
 
 
 class HeBingShuJu(View):

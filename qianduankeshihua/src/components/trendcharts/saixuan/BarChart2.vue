@@ -45,41 +45,27 @@ const yyy = defineProps({
 })
 
 onMounted(() => {
-  option.value.xAxis.data = yyy.shuju.map((item) => item.weihao)
+  option.value.xAxis.data = yyy.shuju.map((item) => item.jixing)
   option.value.series[0].data = yyy.shuju.map((item) => item.num)
 })
 onUpdated(() => {
-  option.value.xAxis.data = yyy.shuju.map((item) => item.weihao)
+  option.value.xAxis.data = yyy.shuju.map((item) => item.jixing)
   option.value.series[0].data = yyy.shuju.map((item) => item.num)
 })
 
-let emit = defineEmits(['jixin'])
-window.myjixing = (shuju) => {
-  emit('jixin', shuju)
-}
-
 const option = ref({
   title: {
-    text: '维修不良位号详情数据',
+    text: '共性不良机型',
     left: 'center'
   },
   tooltip: {
-    enterable: true,
     trigger: 'item',
-    hideDelay: 500,
-    position: 'top', 
-    formatter: function (params) {
-        return `<div class=chartLabel>
-              <div class=title>${params.seriesName}</div>
-              <div class=label>${params.name}:${params.value}  (${params.percent}%)</div>
-              <button onclick="myjixing('${params.name}')">查看更多</button>
-            </div>`
-    },
+    formatter: '{a} <br/>{b} : {c} ({d}%)'
   },
   xAxis: {
     axisLabel: {
       interval: 0, //代表显示所有x轴标签显示
-      rotate:45, //代表逆时针旋转45度
+      rotate:15, //代表逆时针旋转45度
     },
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']

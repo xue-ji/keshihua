@@ -42,6 +42,34 @@ export const postxiantishijianApi = (data: {
         data
     })
 }
+// 详情部分
+export const postxiangqinApi = (data: {
+    name: string;
+    tiaoma: any[];
+
+}) => {
+    return $http({
+        method: "POST",
+        url: "/xiangqin/",
+        data
+    })
+}
+
+// 机型详情部分
+export const postjixingApi = (data: {
+    weihao: string;
+    tiaoma: any[];
+
+}) => {
+    return $http({
+        method: "POST",
+        url: "/jixing/",
+        data
+    })
+}
+
+
+
 
 // KPI接口
 export const getKpiApi = () => {
